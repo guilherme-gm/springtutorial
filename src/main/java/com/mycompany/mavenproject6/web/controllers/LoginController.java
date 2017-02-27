@@ -9,6 +9,7 @@ import com.mycompany.mavenproject6.web.dao.User;
 import com.mycompany.mavenproject6.web.service.UsersService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -47,11 +48,28 @@ public class LoginController {
         if (result.hasErrors()) {
             return "newaccount";
         }
-        
+
         user.setAuthority("user");
         user.setEnabled(true);
+        
+        if (usersService.exists(user.getUsername())) {
+            result.rejectValue("username", "DuplicateKey.user.username", "This username is already in use");
+            return "newaccount";
+        }
 
-        usersService.create(user);
+        // Esse try é usado como ultimo recurso, deve ser evitado
+        // Motivo:
+        // - Caso quase impossível: 2 pessoas tentam criar uma conta com mesmo usuario ao mesmo tempo,
+        //   como estamos em multi-thread, um dos threads irá criar a conta primeiro e o outro irá falhar.
+        // Razões:
+        // - Try-Catch deve ser usado para situações imprevistas
+        // - (Talvez) Isso reservaria um ID no db que vai falhar, perdendo varios IDs de chave primaria atoa
+        try {
+            usersService.create(user);
+        } catch (DuplicateKeyException e) {
+            result.rejectValue("username", "DuplicateKey.user.username", "This username is already in use");
+            return "newaccount";
+        }
 
         return "accountcreated";
     }
