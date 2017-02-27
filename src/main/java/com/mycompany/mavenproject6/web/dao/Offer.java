@@ -19,15 +19,15 @@ public class Offer {
     private int id;
     
     @NotNull // Desnecessário no caso pq tem q ter 5 chars
-    @Size(min = 5, max = 100, message = "Name must be between 5 and 100 characters")
+    @Size(min = 5, max = 100)
     private String name;
     
     @NotNull
     //@Pattern(regexp = ".*\\@.*\\..*", message = "This does not appear to be a valid email address")
-    @ValidEmail(min = 6, message = "This email address is not valid.")
+    @ValidEmail(min = 6)
     private String email;
     
-    @Size(min = 20, max = 100, message = "Text must be between 20 and 100 characters")
+    @Size(min = 20, max = 100)
     private String text;
 
     public Offer(int id, String name, String email, String text) {

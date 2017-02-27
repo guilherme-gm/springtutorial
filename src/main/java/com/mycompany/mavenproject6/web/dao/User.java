@@ -16,14 +16,14 @@ import org.hibernate.validator.constraints.NotBlank;
  */
 public class User {
 
-    @NotBlank(message = "Username cannot be blank.")
-    @Size(min = 3, max = 15, message = "Username must be between 8 and 15 characters long")
-    @Pattern(regexp = "^\\w{8,}$", message = "Characters must only contain alphanumeric characters")
+    @NotBlank
+    @Size(min = 3, max = 15)
+    @Pattern(regexp = "^\\w{8,}$")
     private String username;
     
-    @NotBlank(message = "Password cannot be blank")
-    @Pattern(regexp = "^\\S+$", message = "Password cannot contain spaces")
-    @Size(min = 8, max = 15, message = "Password must be between 8 and 15 characters long.")
+    @NotBlank
+    @Pattern(regexp = "^\\S+$")
+    @Size(min = 8, max = 15)
     private String password;
     
     @NotBlank

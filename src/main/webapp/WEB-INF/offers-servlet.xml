@@ -19,9 +19,16 @@
     
     <!-- View Resolver: Linka o nome retornado pleo controller a um jsp -->
     <bean id="jspViewResolver"
-        class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsps/"></property>
         <property name="suffix" value=".jsp"></property>
+    </bean>
+    
+    <!-- Messages.properties -->
+    <bean id="messageSource" 
+          class="org.springframework.context.support.ResourceBundleMessageSource"
+    >
+        <property name="basename" value="com.mycompany.mavenproject6.web.messages.messages"/>
     </bean>
     
 </beans>
