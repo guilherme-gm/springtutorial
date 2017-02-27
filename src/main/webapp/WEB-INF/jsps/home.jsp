@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -27,6 +28,7 @@
         <ul>
             <li><a href="${pageContext.request.contextPath}/offers">View Offers</a></li>
             <li><a href="${pageContext.request.contextPath}/createoffer">Create Offer</a></li>
+            <li><a href="<c:url value="/newaccount" />">Create Account</a></li>
         </ul>
     </body>
 </html>

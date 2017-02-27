@@ -11,7 +11,7 @@
 <html>
     <head>
         <title>Login Page</title>
-        
+
         <link href="${pageContext.request.contextPath}/static/css/main.css" rel="stylesheet" type="text/css" />
     </head>
     <body onload='document.f.username.focus();'>
@@ -21,8 +21,8 @@
                 Login failed. Bad Credentials
             </span>
         </c:if>
-        
-            <form name='f' action='${pageContext.request.contextPath}/login' method='POST'>
+
+        <form name='f' action='${pageContext.request.contextPath}/login' method='POST'>
             <table class="formtable">
                 <tr><td>User:</td><td><input type='text' name='username' value=''></td></tr>
                 <tr><td>Password:</td><td><input type='password' name='password'/></td></tr>
@@ -30,5 +30,7 @@
                 <input name="_csrf" type="hidden" value="${_csrf.token}" />
             </table>
         </form>
+
+        <a href="<c:url value="/newaccount" />">Create Account</a>
     </body>
 </html>

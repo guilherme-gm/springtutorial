@@ -17,7 +17,7 @@
     <body>
 
         <%-- commandName : nome do atributo no método --%>
-        <sf:form method="post" action="${pageContext.request.contextPath}/docreate" commandName="offer">
+        <sf:form method="post" action="${pageContext.request.contextPath}/createaccount" commandName="user">
 
             <table class="formtable">
                 <tr>
@@ -44,12 +44,12 @@
                 <tr>
                     <td class="label">Confirm Password: </td>
                     <td>
-                        <input type="password" name="confirmpass" />
+                        <input class="control" type="password" name="confirmpass" />
                     </td>
                 </tr>
                 <tr>
                     <td class="label"> </td>
-                    <td><input class="control"  value="Create advert" type="submit" /></td>
+                    <td><input class="control"  value="Create Account" type="submit" /></td>
                 </tr>
             </table>
 
