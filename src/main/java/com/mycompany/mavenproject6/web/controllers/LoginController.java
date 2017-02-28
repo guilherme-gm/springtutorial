@@ -7,6 +7,7 @@ package com.mycompany.mavenproject6.web.controllers;
 
 import com.mycompany.mavenproject6.web.dao.User;
 import com.mycompany.mavenproject6.web.service.UsersService;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
@@ -77,5 +78,14 @@ public class LoginController {
         }
 
         return "accountcreated";
+    }
+    
+    @RequestMapping("/admin")
+    public String showAdmin(Model model) {
+        
+        List<User> users = usersService.getAllUsers();
+        
+        model.addAttribute("users", users);
+        return "admin";
     }
 }

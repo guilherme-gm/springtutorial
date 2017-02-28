@@ -7,6 +7,7 @@ package com.mycompany.mavenproject6.web.service;
 
 import com.mycompany.mavenproject6.web.dao.User;
 import com.mycompany.mavenproject6.web.dao.UsersDAO;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +31,9 @@ public class UsersService {
 
     public boolean exists(String username) {
         return usersDao.exists(username);
+    }
+
+    public List<User> getAllUsers() {
+        return usersDao.getAllUsers();
     }
 }

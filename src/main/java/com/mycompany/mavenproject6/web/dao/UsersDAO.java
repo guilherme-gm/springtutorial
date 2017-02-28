@@ -1,7 +1,9 @@
 package com.mycompany.mavenproject6.web.dao;
 
+import java.util.List;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -43,5 +45,9 @@ public class UsersDAO {
                 new MapSqlParameterSource("username", username),
                 Integer.class
         ) > 0;
+    }
+
+    public List<User> getAllUsers() {
+        return jdbc.query("select * from users, authorities where users.username=authorities.username", BeanPropertyRowMapper.newInstance(User.class));
     }
 }
