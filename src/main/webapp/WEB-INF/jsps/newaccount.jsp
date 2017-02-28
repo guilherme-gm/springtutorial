@@ -4,6 +4,7 @@
     Author     : guilh
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
@@ -13,11 +14,55 @@
         <title>JSP Page</title>
 
         <link href="${pageContext.request.contextPath}/static/css/main.css" rel="stylesheet" type="text/css" />
-    </head>
-    <body>
+        <script type="text/javascript" src="<c:url value="static/script/jquery-3.1.1.min.js"></c:url>"></script>
+
+            <script type="text/javascript">
+                function onLoad() {
+                    $("#password").keyup(checkPasswordMatch);
+                    $("#confirmpass").keyup(checkPasswordMatch);
+                    
+                    $("#details").submit(canSubmit);
+                }
+                
+                function canSubmit() {
+                    var password = $("#password").val();
+                    var confirmpass = $("#confirmpass").val();
+                    
+                    if (password === confirmpass) {
+                        return true;
+                    } else {
+                        alert("Password invalid");
+                        return false;
+                    }
+                }
+                
+                function checkPasswordMatch() {
+                    var password = $("#password").val();
+                    var confirmpass = $("#confirmpass").val();
+                    
+                    if (password.length < 3) {
+                        return;
+                    }
+                    
+                    if (password === confirmpass) {
+                        $("#matchpass").text("Passwords match.");
+                        $("#matchpass").addClass("valid");
+                        $("#matchpass").removeClass("error");
+                        
+                    } else {
+                        $("#matchpass").text("Passwords do not match.");
+                        $("#matchpass").addClass("error");
+                        $("#matchpass").removeClass("valid");
+                    }
+                }
+                
+                $(document).ready(onLoad);
+            </script>
+        </head>
+        <body>
 
         <%-- commandName : nome do atributo no método --%>
-        <sf:form method="post" action="${pageContext.request.contextPath}/createaccount" commandName="user">
+        <sf:form id="details" method="post" action="${pageContext.request.contextPath}/createaccount" commandName="user">
 
             <table class="formtable">
                 <tr>
@@ -37,14 +82,15 @@
                 <tr>
                     <td class="label">Password: </td>
                     <td>
-                        <sf:input path="password" class="control"  name="password" type="password" /><br />
+                        <sf:input id="password" path="password" class="control"  name="password" type="password" /><br />
                         <sf:errors path="password" cssClass="error" />
                     </td>
                 </tr>
                 <tr>
                     <td class="label">Confirm Password: </td>
                     <td>
-                        <input class="control" type="password" name="confirmpass" />
+                        <input id="confirmpass" class="control" type="password" name="confirmpass" />
+                        <div id="matchpass"></div>
                     </td>
                 </tr>
                 <tr>

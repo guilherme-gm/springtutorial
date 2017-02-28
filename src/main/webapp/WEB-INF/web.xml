@@ -5,6 +5,7 @@
             30
         </session-timeout>
     </session-config>
+    
     <!-- Mapeamento de Servlet -->
     <servlet>
         <display-name>offers</display-name>
@@ -24,6 +25,7 @@
         <res-auth>Container</res-auth>
         <res-sharing-scope>Shareable</res-sharing-scope>
     </resource-ref>
+   
     <!-- Filter de segurança -->
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>

@@ -33,7 +33,6 @@
     <!-- define acesso das urls -->
     <!-- A leitura é feita de cima pra baixo -->
     <security:http use-expressions="true">
-        <!-- Bloqueia todas as URLs -->
         <security:intercept-url pattern="/createoffer" access="isAuthenticated()" />
         <security:intercept-url pattern="/docreate" access="isAuthenticated()" />
         <security:intercept-url pattern="/offercreated" access="isAuthenticated()" />
