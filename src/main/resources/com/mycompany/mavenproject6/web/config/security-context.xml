@@ -37,6 +37,8 @@
         <security:intercept-url pattern="/docreate" access="isAuthenticated()" />
         <security:intercept-url pattern="/offercreated" access="isAuthenticated()" />
         <security:intercept-url pattern="/" access="permitAll" />
+        <security:intercept-url pattern="/logout" access="permitAll" />
+        <security:intercept-url pattern="/loggedout" access="permitAll" />
         <security:intercept-url pattern="/static/**" access="permitAll" />
         <security:intercept-url pattern="/newaccount" access="permitAll" />
         <security:intercept-url pattern="/createaccount" access="permitAll" />
@@ -47,5 +49,6 @@
         <security:intercept-url pattern="/**" access="denyAll" />
         <!-- Indica que vaoms usar form de login e cria o form de login automatico -->
         <security:form-login login-page="/login" authentication-failure-url="/login?error=true" />
+        <security:logout logout-success-url="/loggedout" />
     </security:http>
 </beans>
