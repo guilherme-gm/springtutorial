@@ -29,7 +29,7 @@
             <li><a href="${pageContext.request.contextPath}/offers">View Offers</a></li>
             <li><a href="${pageContext.request.contextPath}/createoffer">Create Offer</a></li>
             <li><a href="<c:url value="/newaccount" />">Create Account</a></li>
-            <li><a href="<c:url value="/logout" />">Logout</a></li>
+            <li><a href="<c:url value="/admin" />">Admin</a></li>
         </ul>
 
         <c:url var="logoutUrl" value="/logout"/>
