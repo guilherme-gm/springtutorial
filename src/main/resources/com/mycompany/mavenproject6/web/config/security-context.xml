@@ -38,6 +38,7 @@
     <!-- A leitura é feita de cima pra baixo -->
     <security:http use-expressions="true">
         <security:intercept-url pattern="/admin" access="permitAll" />
+        <security:intercept-url pattern="/denied" access="permitAll" />
 <!--        <security:intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" />-->
         <security:intercept-url pattern="/createoffer" access="isAuthenticated()" />
         <security:intercept-url pattern="/docreate" access="isAuthenticated()" />
@@ -56,6 +57,8 @@
         <!-- Indica que vaoms usar form de login e cria o form de login automatico -->
         <security:form-login login-page="/login" authentication-failure-url="/login?error=true" />
         <security:logout logout-success-url="/loggedout" />
+        <!-- Acesso negado -->
+        <security:access-denied-handler error-page="/denied" />
     </security:http>
     
     <!-- Adiciona segurança em nível de método -->
