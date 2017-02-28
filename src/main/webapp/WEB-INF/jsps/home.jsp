@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -29,13 +30,22 @@
             <li><a href="${pageContext.request.contextPath}/offers">View Offers</a></li>
             <li><a href="${pageContext.request.contextPath}/createoffer">Create Offer</a></li>
             <li><a href="<c:url value="/newaccount" />">Create Account</a></li>
-            <li><a href="<c:url value="/admin" />">Admin</a></li>
         </ul>
 
-        <c:url var="logoutUrl" value="/logout"/>
-        <form action="${logoutUrl}" method="post">
-            <input type="submit" value="Logout"/>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        </form>
+        <sec:authorize access="!isAuthenticated()">
+            <a href="<c:url value="/login" />">Login</a>
+        </sec:authorize>
+
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <a href="<c:url value="/admin" />">Admin</a>
+        </sec:authorize>
+
+        <sec:authorize access="isAuthenticated()">
+            <c:url var="logoutUrl" value="/logout"/>
+            <form action="${logoutUrl}" method="post">
+                <input type="submit" value="Logout"/>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+        </sec:authorize>
     </body>
 </html>
