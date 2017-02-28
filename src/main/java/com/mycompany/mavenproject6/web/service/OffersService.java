@@ -9,6 +9,7 @@ import com.mycompany.mavenproject6.web.dao.Offer;
 import com.mycompany.mavenproject6.web.dao.OffersDAO;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 /**
@@ -29,6 +30,7 @@ public class OffersService {
         return offersDao.getOffers();
     }
 
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public void create(Offer offer) {
         offersDao.create(offer);
     }
