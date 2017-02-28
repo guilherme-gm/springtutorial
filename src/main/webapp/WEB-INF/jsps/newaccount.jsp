@@ -7,6 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -45,12 +46,12 @@
                     }
                     
                     if (password === confirmpass) {
-                        $("#matchpass").text("Passwords match.");
+                        $("#matchpass").text("<fmt:message key="MatchedPasswords.user.password" />");
                         $("#matchpass").addClass("valid");
                         $("#matchpass").removeClass("error");
                         
                     } else {
-                        $("#matchpass").text("Passwords do not match.");
+                        $("#matchpass").text("<fmt:message key="UnmatchedPasswords.user.password" />");
                         $("#matchpass").addClass("error");
                         $("#matchpass").removeClass("valid");
                     }
