@@ -39,3 +39,30 @@ table.offers {
     padding: 20px;
     border: 1px solid gray;
 }
+
+div.footer {
+    font-size: small;
+    color: grey;
+}
+
+div.content {
+    position: relative;
+    padding: 40px;
+}
+
+div.header {
+    text-align: center;
+    width: 100%;
+    background-color: red;
+}
+
+a.title {
+    color: white;
+    font-size: 35px;
+}
+
+a.login {
+    position: absolute;
+    right: 30px;
+    top: 20px;
+}
