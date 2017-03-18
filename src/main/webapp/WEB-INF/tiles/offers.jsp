@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <table class="offers">
     <tr><td>Name</td><td>Email</td><td>Offer</td></tr>
 

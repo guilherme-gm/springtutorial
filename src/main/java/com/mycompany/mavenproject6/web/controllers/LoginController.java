@@ -85,6 +85,11 @@ public class LoginController {
         return "accountcreated";
     }
     
+    // Principal princiapl : usuario logado
+    //  public String showAdmin(Model model, Principal principal) {
+    // 
+    //@RequestParam(value="delete", required=false) String delete)
+    //  - se o botão submit tiver name="delete" essa string tem valor, se não, null
     @RequestMapping("/admin")
     public String showAdmin(Model model) {
         
