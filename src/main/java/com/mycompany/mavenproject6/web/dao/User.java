@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
@@ -18,21 +19,25 @@ import org.hibernate.validator.constraints.NotBlank;
  *
  * @author guilh
  */
-@Entity
-@Table(name="users")
+@Entity // Define como entidade
+@Table(name="users") // Define a tabela
 public class User {
 
     @NotBlank
     @Size(min = 3, max = 15)
     @Pattern(regexp = "^\\w{8,}$")
-    @Id
-    @Column(name = "username")
+    @Id // Define como Chave Primária
+    @Column(name = "username") // Define coluna (opcional)
     private String username;
     
     @NotBlank
     @Pattern(regexp = "^\\S+$")
     @Size(min = 8, max = 15)
+    @Transient
     private String password;
+    
+    @Column(name = "password")
+    private String encryptedPassword;
     
     @NotBlank
     @Email
@@ -67,6 +72,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEncryptedPassword() {
+        return encryptedPassword;
+    }
+
+    public void setEncryptedPassword(String encryptedPassword) {
+        this.encryptedPassword = encryptedPassword;
     }
 
     public String getEmail() {

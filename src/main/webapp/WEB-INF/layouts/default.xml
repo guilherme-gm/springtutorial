@@ -37,7 +37,7 @@
         <put-attribute name="content" value="/WEB-INF/tiles/newaccount.jsp" />
     </definition>
 
-    <definition name="newaccount" extends="offers.base">
+    <definition name="accountcreated" extends="offers.base">
         <put-attribute name="title" value="Account Created" />
         <put-attribute name="content" value="/WEB-INF/tiles/account_created.jsp" />
     </definition>
@@ -56,4 +56,10 @@
         <put-attribute name="title" value="Logged Out" />
         <put-attribute name="content" value="/WEB-INF/tiles/loggedout.jsp" />
     </definition>
+    
+    <definition name="error" extends="offers.base">
+        <put-attribute name="title" value="Error" />
+        <put-attribute name="content" value="/WEB-INF/tiles/error.jsp" />
+    </definition>
+    
 </tiles-definitions>
